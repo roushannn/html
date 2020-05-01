@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<!------ Main Index HTML Fruit Order Form ---------->
+	<head>
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+		<title>Rou's Fruit Shop</title>
+	</head>
+
+	<body>
+
+	<div style="text-align:center;">
+		<table align="center" bgcolor="#FFFFFF" width="85%" style="border-right:2px solid #666666; border-bottom:2px solid #666666;">
+			<tr><td align="left">
+				<h1>Rou Rou Fruit Order Form</h1>
+				<h2>Only the freshiest available :> </h2>
+			</td></tr>
+		</table>
+
+		<br>
+		<form name = "orderForm" action = "submit.php" method = "post">
+			<table id="t01" align="center" bgcolor="#FFFFFF" width="85%">
+				<tr>
+					<th colspan="3">Name please:</th>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="text" name="cusName" placeholder="Enter your name" 
+						required=""></td>
+				</tr>
+				<tr>
+					<th>apples/pingguo (69c):<br></th>
+  					<th>oranges/cheng (59c):<br></th>
+  					<th>bananas/xiangjiao (39c):<br></th>
+  				</tr>
+  				<tr>
+  					<td><input type="text" name="apples" placeholder="Enter Quantity" onblur="validateNum();calculateCost(); "><br></td>
+  					<td><input type="text" name="oranges" placeholder="Enter Quantity" onblur=" validateNum();calculateCost();"><br></td>
+  					<td><input type="text" name="bananas" placeholder="Enter Quantity" onblur=" validateNum();calculateCost();"><br></td>
+  				</tr>
+  				<tr>
+  					<th align="center" colspan="3">payment methods:</th>
+  				</tr>
+  				<tr>
+  					<td colspan="3">
+  						<input type="radio" name="paymentMethod" value="Visa" checked="checked">Visa 
+						<input type="radio" name="paymentMethod" value="MasterCard">MasterCard 
+						<input type="radio" name="paymentMethod" value="Discover">Discover 
+					</td>
+  				</tr>
+  				<tr>
+  					<th colspan="3">Total Cost:</th>
+  				</tr>
+  				<tr>
+  					<td colspan="3"><input type="text" name="totalCost" placeholder="Total Cost" onfocus="this.blur()"></td>
+  				</tr>
+  				<tr>
+  					<td colspan="3"><br>
+  						<input type="reset" value="Reset">
+  						<input type="submit" value="Submit"></td>
+  				</tr>
+			</table>
+		</form>
+	</div>
+	</body>
+
+	<footer>
+        <p class="text-uppercase">
+           Fruit Order Form &copy; 2019. Done By Rou Shan (U1720758J) for CZ3006 Assignment II.
+        </p>
+    </footer>
+
+	<script type="text/javaScript">
+		//Check if input is valid or not. If invalid, the text box will display “NaN” and issue an error message.
+		function validateNum(){
+			numApple = document.forms["orderForm"]["apples"].value;
+			numOrange = document.forms["orderForm"]["oranges"].value;
+			numBanana = document.forms["orderForm"]["bananas"].value;
+
+			//Vaildate input for order apple textbox which can only contain numbers
+			if(isNaN(numApple)){
+				alert("Invalid input at apples! Please enter a valid integer. :)");
+				return false;
+			}
+
+			//Vaildate input for order orange textbox which can only contain numbers
+			else if(isNaN(numOrange)){
+				alert("Invalid input at oranges! Please enter a valid integer. :)");
+				return false;
+			}
+
+			//Vaildate input for order banana textbox which can only contain numbers
+			else if(isNaN(numBanana)){
+				alert("Invalid input at bananas! Please enter a valid integer. :)");
+				return false;
+			}
+
+			else{
+				//Calculate the total cost of all fruits if all inputs are valid
+				return true;
+			}
+		}//end validateNum()
+
+		//If input is valid, the total cost of the user’s order is recalculated and displayed in totalCost textbox
+		function calculateCost(){
+			numApple = document.forms["orderForm"]["apples"].value;
+			numOrange = document.forms["orderForm"]["oranges"].value;
+			numBanana = document.forms["orderForm"]["bananas"].value;
+			totalCost = numApple * 0.69 + numOrange * 0.59 + numBanana * 0.39;
+			document.forms["orderForm"]["totalCost"].value = totalCost;
+		}//end calculateCost()
+
+	</script>
+
+</html>
